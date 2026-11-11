@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomy Atlas - Explore the human body in 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <h1>Anatomy Atlas</h1>
+    <p>Explore the human body in 3D</p>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <button class="tab on" data-view="explore" type="button">Explore</button>
+    <button class="tab" data-view="quiz" type="button">Quiz</button>
+  </nav>
+</header>
+
+<!-- ============ EXPLORE ============ -->
+<main id="explore" class="view on">
+
+  <aside class="rail" aria-label="Organ list">
+    <div class="search">
+      <label for="search" class="sr">Search organs</label>
+      <input id="search" type="search" placeholder="Search an organ or system" autocomplete="off">
+    </div>
+    <div id="chips" class="chips" role="group" aria-label="Filter by body system"></div>
+    <div id="organList" class="organ-list"></div>
+  </aside>
+
+  <section class="stage-wrap" aria-label="3D model">
+    <div id="stage" class="stage"></div>
+
+    <div class="skin-ctl">
+      <label for="skin">Skin</label>
+      <input id="skin" type="range" min="0" max="100" value="14">
+    </div>
+
+    <div id="tip" class="tip" hidden></div>
+    <p class="hint" id="hint">Drag to rotate, scroll or pinch to zoom, click an organ to learn about it.</p>
+
+    <div class="toolbar" role="toolbar" aria-label="Camera controls">
+      <button type="button" id="rotL" title="Rotate 45 degrees left">Rotate left</button>
+      <button type="button" id="rotR" title="Rotate 45 degrees right">Rotate right</button>
+      <button type="button" id="auto" aria-pressed="false" title="Spin the model slowly">Auto-rotate</button>
+      <button type="button" id="zoomOut" title="Zoom out">Zoom out</button>
+      <button type="button" id="zoomIn" title="Zoom in">Zoom in</button>
+      <button type="button" id="reset" title="Back to full body view">Reset view</button>
+    </div>
+  </section>
+
+  <aside class="detail" id="detail" aria-live="polite"></aside>
+</main>
+
+<!-- ============ QUIZ ============ -->
+<main id="quiz" class="view">
+  <div class="quiz-card" id="quizBody"></div>
+</main>
+
+<!-- three.js (r147, classic build) with local fallback in /libs -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script>window.THREE || document.write('<script src="libs/three.min.js"><\/script>');</script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script>(window.THREE && THREE.OrbitControls) || document.write('<script src="libs/OrbitControls.js"><\/script>');</script>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
